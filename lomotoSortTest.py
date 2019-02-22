@@ -16,7 +16,7 @@ def partition(ls, low, high):
                                     # 如果 i 最初指向 low, 例子 [1, 12, 3, 4, 5] => [12 , 1]
 
     for j in range(low, high):
-        if ls[j] <= key:
+        if ls[j] < key:
             i += 1
             ls[i], ls[j] = ls[j], ls[i]    # 当ls[j] <= key值时，ls[i]和ls[j]会重复相互赋值
 

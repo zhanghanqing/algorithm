@@ -34,7 +34,6 @@ def rob(nums: 'List[int]') -> 'int':
 时间复杂度分析
 因为每一种状态都只被搜索了一次 所以时间复杂度就是O(n)
 记忆化搜索又被称之为“备忘录”
-
 """
 # 记忆化搜索
 def solve(idx, nums, result): # idx -> 抢劫第几家金店  nums -> 每一家店有多少钱
@@ -49,11 +48,33 @@ def solve(idx, nums, result): # idx -> 抢劫第几家金店  nums -> 每一家�
 
 
 # 动态规划
+# 至低向上
 # 将递归改为递推, 有明确的搜索路径
-def solve()
+def solve(idx, nums, result):
+    if len(result) == 0:
+        return 0
+
+    if len(result) == 1:
+        return nums[0]
+
+    result[0] = nums[0]
+    result[1] = max(nums[0], nums[1])
+
+    for idx in range(2, len(result)):
+        result[idx] = max((nums[idx] + result[idx - 2]), result[idx - 1])
+
+    return result[idx]
 
 
+# 斐波那契数列
+def fib(n):
+    if n == 0:
+        return 1
 
+    if n == 1:
+        return 1
+
+    return fib(n - 1) + fib(n - 2)
 
 
 
